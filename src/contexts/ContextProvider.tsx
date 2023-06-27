@@ -41,6 +41,9 @@ type GlobalContextType = {
   setJson: React.Dispatch<React.SetStateAction<ResponseSearchType | null>>;
 };
 
-export type ResponseSearchType = PhotosWithTotalResults | ErrorResponse | Videos;
+export type ResponseSearchType =
+  | PhotosWithTotalResults
+  | ErrorResponse
+  | Videos;
 
 export type PhotoOrVideoType = "photo" | "video";

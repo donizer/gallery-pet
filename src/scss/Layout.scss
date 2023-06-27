@@ -3,7 +3,6 @@
   display: grid;
   height: 100dvh;
   grid-template-columns: auto;
-  grid-template-rows: 120px;
+  grid-template-rows: 9rem auto 9rem;
   grid-auto-rows: 1fr;
-
 }
