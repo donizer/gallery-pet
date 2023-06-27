@@ -1,5 +1,5 @@
-import "../scss/Footer.scss";
 import { CSSProperties } from "react";
+import "../scss/Footer.scss";
 const Footer = () => {
   const PexelStyle: CSSProperties = {
     height: "9rem",
