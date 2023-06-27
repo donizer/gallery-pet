@@ -5,7 +5,7 @@ const Footer = () => {
     height: "9rem",
   };
   return (
-    <footer>
+    <footer className="footer">
       <p className="Sponsor">Made With</p>
       <a href="https://www.pexels.com">
         <img
