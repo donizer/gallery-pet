@@ -5,6 +5,7 @@ import { PexelsContext } from "../contexts/ContextProvider";
 import { PhotosWithTotalResults } from "pexels";
 // ErrorResponse, Videos
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function instanceOfPhotos(object: any): object is PhotosWithTotalResults {
   return (object as PhotosWithTotalResults).photos !== undefined;
 }
@@ -35,3 +36,17 @@ function Gallery() {
 }
 
 export default Gallery;
+
+// //todo Own fetch
+// const url = "https://api.pexels.com/v1/search/?page=2&per_page=50&query=Japan";
+// const test = fetch(url, {
+//   method: "GET",
+//   headers: {
+//     Authorization: "qaxLvqCpYIxuOSlbBG6BYEoZup3UZpB8a7PZ2JGEiWO7CPzmmQbQDGp7",
+//   },
+// }).then((e) => {
+//   e.json().then((e) => {
+//     console.log(e);
+//   });
+// });
+// test;

@@ -41,7 +41,7 @@ export default function Navigation() {
 
   useEffect(() => {
     if (typeof query === "string" && query !== null) {
-      client.photos.search({ query: query, per_page: 50 }).then((photos) => {
+      client.photos.search({ query: query, per_page: 80 }).then((photos) => {
         setJson(photos);
       });
     }
@@ -54,6 +54,12 @@ export default function Navigation() {
   return (
     <nav className="nav">
       <div className="logo ">DR</div>
+      <a href="https://www.pexels.com">
+        <img
+          style={{ height: "9rem", padding: "0 8px 0" }}
+          src="https://images.pexels.com/lib/api/pexels-white.png"
+        />
+      </a>
       <form onSubmit={onSubmit}>
         <input
           {...register("query")}

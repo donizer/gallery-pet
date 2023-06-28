@@ -1,5 +1,5 @@
 .nav {
-  background-color: #dbdbdb;
+  background-color: #993366;
   position: sticky;
   top: 0px;
   display: flex;
@@ -10,7 +10,7 @@
     place-items: center;
     width: 9rem;
     height: 100%;
-    background-color: #e74a4a;
+    // background-color: #e74a4a;
     font-size: 6rem;
     // color: #000000;
 
@@ -23,11 +23,16 @@
   }
   form {
     height: 100%;
-  }
-  input,
-  p {
-    // background-color: #5ce74a50;
-    height: 100%;
-    font-size: 5rem;
+    width: 100%;
+    input,
+    p {
+      // background-color: #5ce74a50;
+      height: 100%;
+      font-size: 5rem;
+    }
+    input {
+      min-width: 0;
+      width: 700px;
+    }
   }
 }

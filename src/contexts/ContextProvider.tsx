@@ -1,10 +1,24 @@
 import React from "react";
-import { PhotosWithTotalResults, ErrorResponse, Videos } from "pexels";
+import {
+  PhotosWithTotalResults,
+  Photo,
+  ErrorResponse,
+  Videos,
+  Video,
+} from "pexels";
+
+
 
 const iGlobalContext: GlobalContextType = {
   photoOrVideo: "photo",
   query: null,
   json: null,
+  isOverlayActive: false,
+  currImage: null,
+  overlayClass: "",
+  setOverlayClass: () => null,
+  setCurrImage: () => null,
+  setOverlay: () => null,
   setJson: () => null,
   setPhotoOrVideo: () => null,
   setQuery: () => null,
@@ -22,10 +36,25 @@ export const PexelContextProvider = ({
     React.useState<PhotoOrVideoType>("photo");
   const [query, setQuery] = React.useState<string | null>(null);
   const [json, setJson] = React.useState<ResponseSearchType | null>(null);
-
+  const [isOverlayActive, setOverlay] = React.useState<boolean>(false);
+  const [currImage, setCurrImage] = React.useState<Photo | Video | null>(null);
+  const [overlayClass, setOverlayClass] = React.useState<string>("");
   return (
     <PexelsContext.Provider
-      value={{ photoOrVideo, setPhotoOrVideo, query, setQuery, json, setJson }}
+      value={{
+        photoOrVideo,
+        setPhotoOrVideo,
+        query,
+        setQuery,
+        json,
+        setJson,
+        isOverlayActive,
+        setOverlay,
+        currImage,
+        setCurrImage,
+        overlayClass,
+        setOverlayClass,
+      }}
     >
       {children}
     </PexelsContext.Provider>
@@ -33,6 +62,12 @@ export const PexelContextProvider = ({
 };
 
 type GlobalContextType = {
+  overlayClass: string;
+  setOverlayClass: React.Dispatch<React.SetStateAction<string>>;
+  currImage: Photo | Video | null;
+  setCurrImage: React.Dispatch<React.SetStateAction<Photo | Video | null>>;
+  isOverlayActive: boolean;
+  setOverlay: React.Dispatch<React.SetStateAction<boolean>>;
   photoOrVideo: PhotoOrVideoType;
   setPhotoOrVideo: React.Dispatch<React.SetStateAction<PhotoOrVideoType>>;
   query: string | null;

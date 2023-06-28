@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import "../scss/Footer.scss";
 const Footer = () => {
   const PexelStyle: CSSProperties = {
-    height: "9rem",
+    height: "4rem",
   };
   return (
     <footer className="footer">

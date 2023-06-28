@@ -3,6 +3,8 @@
   height: 100%;
   object-fit: cover;
 
+  cursor: pointer;
+
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -11,7 +13,7 @@
 .horizontal {
   grid-column: span 2;
   &-L {
-    grid-column: span 2;  
+    grid-column: span 2;
   }
   &-XL {
     grid-column: span 3;
