@@ -11,7 +11,11 @@ const App = () => {
   const body = document.querySelector("body");
   React.useEffect(() => {
     if (body === null) return;
-    body.classList.toggle("stop-scrolling");
+    if (isOverlayActive) {
+      body.classList.add("stop-scrolling");
+    } else {
+      body.classList.remove("stop-scrolling");
+    }
   }, [body, isOverlayActive]);
   return (
     <div className={`wrapper`}>
