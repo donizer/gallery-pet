@@ -3,6 +3,7 @@ import { useEffect, useContext } from "react";
 import { useForm, Resolver } from "react-hook-form";
 import { PexelsContext } from "../contexts/ContextProvider";
 import { createClient } from "pexels";
+import BurgerButton from "./BurgerButton";
 
 const client = createClient(
   "qaxLvqCpYIxuOSlbBG6BYEoZup3UZpB8a7PZ2JGEiWO7CPzmmQbQDGp7"
@@ -27,7 +28,14 @@ const resolver: Resolver<FormValues> = async (values: FormValues) => {
 };
 
 export default function Navigation() {
-  const { query, setQuery, json, setJson } = useContext(PexelsContext);
+  const {
+    query,
+    setQuery,
+    json,
+    setJson,
+    isMobileMenuActive,
+    setMobileMenuActive,
+  } = useContext(PexelsContext);
 
   const {
     register,
@@ -37,6 +45,7 @@ export default function Navigation() {
 
   const onSubmit = handleSubmit((data) => {
     setQuery(data.query);
+    setMobileMenuActive(false);
   });
 
   useEffect(() => {
@@ -54,13 +63,10 @@ export default function Navigation() {
   return (
     <nav className="nav">
       <div className="logo ">DR</div>
-      <a href="https://www.pexels.com">
-        <img
-          style={{ height: "9rem", padding: "0 8px 0" }}
-          src="https://images.pexels.com/lib/api/pexels-white.png"
-        />
-      </a>
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className={`${isMobileMenuActive ? "active" : ""}`}
+      >
         <input
           {...register("query")}
           placeholder={
@@ -68,6 +74,9 @@ export default function Navigation() {
           }
         />
       </form>
+      <div className=" Right">
+        <BurgerButton />
+      </div>
     </nav>
   );
 }

@@ -1,5 +1,5 @@
 .main {
-  max-height: auto;
+  // height: ;
   background-color: #fcfcfc;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
@@ -7,5 +7,11 @@
   grid-gap: 1rem;
   padding: 1rem;
   grid-auto-flow: dense;
-  grid-row: span 0
+  grid-row: span 0;
+}
+@media screen and (max-width: 786px) {
+  .main {
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    grid-auto-rows: 9rem;
+  }
 }

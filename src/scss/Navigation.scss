@@ -1,10 +1,13 @@
 .nav {
   background-color: #993366;
-  position: sticky;
+  position: relative;
   top: 0px;
+  right: 0;
+  left: 0;
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 10px 10px #00000090;
+
   .logo {
     display: grid;
     place-items: center;
@@ -18,12 +21,10 @@
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
   }
-  .RightLogo {
-    margin-left: auto;
-  }
+
   form {
     height: 100%;
-    width: 100%;
+    // width: 100%;
     input,
     p {
       // background-color: #5ce74a50;
@@ -31,8 +32,41 @@
       font-size: 5rem;
     }
     input {
-      min-width: 0;
-      width: 700px;
+      width: 625px;
+    }
+  }
+  .Right {
+    margin-right: 2rem;
+    margin-left: auto;
+  }
+}
+@media screen and (max-width: 786px) {
+  .nav {
+    form {
+      position: fixed;
+      background-color: #00000080;
+      padding: 1rem;
+      height: 100dvh;
+      width: 100%;
+      top: 0;
+      right: -100%;
+
+      transition: right 300ms ease-in-out;
+      &.active {
+        right: 0%;
+      }
+      input,
+      p {
+        // background-color: #5ce74a50;
+      }
+      input {
+        background-color: #fff;
+        color: #121113;
+        height: 5rem;
+        width: 100%;
+        margin-top: 8rem;
+        font-size: 2.5rem;
+      }
     }
   }
 }

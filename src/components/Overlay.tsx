@@ -32,13 +32,17 @@ export default function Overlay() {
         </div>
       </div>
     );
+  const isHorizontal = currImage.width / currImage.height > 1;
   if (instanceOfPhoto(currImage)) {
     return (
       <div
         className={`overlay ${isOverlayActive ? "active" : ""}`}
         onClick={handleMouse}
       >
-        <div className="close-btn" onClick={handleMouse}>
+        <div
+          className={`close-btn ${isHorizontal ? "horizontal" : ""}`}
+          onClick={handleMouse}
+        >
           <div></div>
         </div>
         <ProgressiveImage
@@ -61,7 +65,10 @@ export default function Overlay() {
         className={`overlay ${isOverlayActive ? "active" : ""}`}
         onClick={handleMouse}
       >
-        <div className="close-btn" onClick={handleMouse}>
+        <div
+          className={`close-btn ${isHorizontal ? "horizontal" : ""}`}
+          onClick={handleMouse}
+        >
           <div></div>
         </div>
         <video

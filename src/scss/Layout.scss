@@ -4,5 +4,12 @@
   height: 100dvh;
   grid-template-columns: auto;
   grid-template-rows: 9rem auto 6rem;
-  grid-auto-rows: 1fr;
+  // grid-auto-rows: 1fr;
+}
+
+@media screen and (max-width: 786px) {
+  .wrapper {
+    grid-template-rows: 8rem 1fr 5rem;
+    overflow-x: hidden;
+  }
 }

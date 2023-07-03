@@ -7,8 +7,6 @@ import {
   Video,
 } from "pexels";
 
-
-
 const iGlobalContext: GlobalContextType = {
   photoOrVideo: "photo",
   query: null,
@@ -16,6 +14,8 @@ const iGlobalContext: GlobalContextType = {
   isOverlayActive: false,
   currImage: null,
   overlayClass: "",
+  isMobileMenuActive: false,
+  setMobileMenuActive: () => null,
   setOverlayClass: () => null,
   setCurrImage: () => null,
   setOverlay: () => null,
@@ -39,6 +39,8 @@ export const PexelContextProvider = ({
   const [isOverlayActive, setOverlay] = React.useState<boolean>(false);
   const [currImage, setCurrImage] = React.useState<Photo | Video | null>(null);
   const [overlayClass, setOverlayClass] = React.useState<string>("");
+  const [isMobileMenuActive, setMobileMenuActive] =
+    React.useState<boolean>(false);
   return (
     <PexelsContext.Provider
       value={{
@@ -54,6 +56,8 @@ export const PexelContextProvider = ({
         setCurrImage,
         overlayClass,
         setOverlayClass,
+        isMobileMenuActive,
+        setMobileMenuActive,
       }}
     >
       {children}
@@ -62,6 +66,8 @@ export const PexelContextProvider = ({
 };
 
 type GlobalContextType = {
+  isMobileMenuActive: boolean;
+  setMobileMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
   overlayClass: string;
   setOverlayClass: React.Dispatch<React.SetStateAction<string>>;
   currImage: Photo | Video | null;
