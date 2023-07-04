@@ -1460,6 +1460,9 @@ function createFormControl(props = {}, flushRootRender) {
       }
     });
     _names.mount.add(name);
+    if (!isUndefined(options.value)) {
+      set(_formValues, name, options.value);
+    }
     field ? disabledIsDefined && set(_formValues, name, options.disabled ? void 0 : get(_formValues, name, getFieldValue(field._f))) : updateValidAndValue(name, true, options.value);
     return {
       ...disabledIsDefined ? { disabled: options.disabled } : {},
@@ -1725,6 +1728,7 @@ function createFormControl(props = {}, flushRootRender) {
 }
 function useForm(props = {}) {
   const _formControl = import_react.default.useRef();
+  const _values = import_react.default.useRef();
   const [formState, updateFormState] = import_react.default.useState({
     isDirty: false,
     isValidating: false,
@@ -1756,8 +1760,9 @@ function useForm(props = {}) {
     }
   });
   import_react.default.useEffect(() => {
-    if (props.values && (!deepEqual(props.values, control._defaultValues) || !deepEqual(props.values, control._formValues))) {
+    if (props.values && !deepEqual(props.values, _values.current)) {
       control._reset(props.values, control._options.resetOptions);
+      _values.current = props.values;
     } else {
       control._resetDefaultValues();
     }
