@@ -1,0 +1,47 @@
+{
+  "hash": "07c4438a",
+  "browserHash": "00e6d0ac",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "5fa02986",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "c464417e",
+      "needsInterop": true
+    },
+    "react-hook-form": {
+      "src": "../../node_modules/react-hook-form/dist/index.esm.mjs",
+      "file": "react-hook-form.js",
+      "fileHash": "9efdd47a",
+      "needsInterop": false
+    },
+    "pexels": {
+      "src": "../../node_modules/pexels/dist/main.module.js",
+      "file": "pexels.js",
+      "fileHash": "4661b855",
+      "needsInterop": false
+    },
+    "react-progressive-graceful-image": {
+      "src": "../../node_modules/react-progressive-graceful-image/dist.js",
+      "file": "react-progressive-graceful-image.js",
+      "fileHash": "c6c5a316",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-PRK46SJB": {
+      "file": "chunk-PRK46SJB.js"
+    },
+    "chunk-FLAVOKRJ": {
+      "file": "chunk-FLAVOKRJ.js"
+    },
+    "chunk-AC2VUBZ6": {
+      "file": "chunk-AC2VUBZ6.js"
+    }
+  }
+}

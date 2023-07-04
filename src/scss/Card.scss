@@ -1,13 +1,38 @@
-.card-item {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
+.card__container {
+  position: relative;
   cursor: pointer;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  .card__item {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .info__container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0%;
+    right: 0%;
+
+    overflow: hidden;
+    a {
+      all: unset;
+    }
+    .card__author {
+      background-color: #000;
+      position: absolute;
+    }
+  }
+  @media screen and (max-width: 786px) {
+    .card__author {
+      bottom: 0%;
+      right: 0%;
+    }
+  }
 }
 
 .horizontal {

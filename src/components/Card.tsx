@@ -2,7 +2,7 @@
 import "../scss/Card.scss";
 import CSS from "csstype";
 import { Photo } from "pexels";
-import { useContext, useState } from "react";
+import { MouseEvent, useContext, useEffect, useState } from "react";
 import { PexelsContext } from "../contexts/ContextProvider";
 
 // Defining the Card component
@@ -14,14 +14,27 @@ export default function Card(props: { key: number; photo: Photo }) {
   const handleMouseHover = () => {
     setIsHover(!isHover);
   };
-  const styles: CSS.Properties = {
+  const boxShadowStyle: CSS.Properties = {
     boxShadow: isHover
       ? `7px 7px  ${props.photo.avg_color},7px 7px 25px 25px ${props.photo.avg_color}20`
       : `-2px 2px  ${props.photo.avg_color}`,
     transition: "all 0.1s ease-in-out",
   };
-  const handleOnClick = () => {
-    console.log(props.photo);
+  const authorStyle: CSS.Properties = {
+    backgroundColor: `${props.photo.avg_color}`,
+    color: "white",
+    textDecoration: "wheat",
+    bottom: isHover ? "0" : "-100%",
+    right: isHover ? "0" : "-100%",
+    transition: "all 0.1s ease-in-out",
+  };
+  const handleMouseClick = (e: MouseEvent<HTMLDivElement>) => {
+    const target = e.target as Element;
+
+    if (target.classList.contains("card__author")) {
+      return;
+    }
+
     setOverlay(!isOverlayActive);
     setCurrImage(props.photo);
     setOverlayClass(imageAspect);
@@ -48,15 +61,35 @@ export default function Card(props: { key: number; photo: Photo }) {
       ? props.photo.src.medium
       : props.photo.src.large;
 
+  useEffect(() => {
+    if (document.body.clientWidth < 768) {
+      setIsHover(true);
+    }
+  }, []);
+
   return (
-    <img
-      src={url}
-      style={styles}
-      className={`card-item ${imageAspect}`}
+    <div
+      className={`card__container ${imageAspect} `}
+      onClick={handleMouseClick}
+      style={boxShadowStyle}
       onMouseEnter={handleMouseHover}
       onMouseLeave={handleMouseHover}
-      onClick={handleOnClick}
-      alt={props.photo.alt ? props.photo.alt : ""}
-    />
+    >
+      <img
+        src={url}
+        className={`card__item `}
+        alt={props.photo.alt ? props.photo.alt : ""}
+      />
+      <div className="info__container">
+        <a
+          href={`${props.photo.photographer_url}`}
+          className="card__author"
+          target="_blank"
+          style={authorStyle}
+        >
+          {props.photo.photographer}
+        </a>
+      </div>
+    </div>
   );
 }

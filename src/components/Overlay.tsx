@@ -36,6 +36,7 @@ export default function Overlay() {
   if (instanceOfPhoto(currImage)) {
     return (
       <div
+        style={{ backgroundColor: `${currImage.avg_color}a0` }}
         className={`overlay ${isOverlayActive ? "active" : ""}`}
         onClick={handleMouse}
       >
@@ -45,10 +46,7 @@ export default function Overlay() {
         >
           <div></div>
         </div>
-        <ProgressiveImage
-          src={currImage.src.original}
-          placeholder={placeholder}
-        >
+        <ProgressiveImage src={currImage.src.large2x} placeholder={placeholder}>
           {(src, loading) => (
             <img
               className={`${overlayClass} ${loading ? "loading" : "loaded"}`}
@@ -62,6 +60,7 @@ export default function Overlay() {
   } else if (instanceOfVideo(currImage)) {
     return (
       <div
+        style={{ backgroundColor: `#00000080a0` }}
         className={`overlay ${isOverlayActive ? "active" : ""}`}
         onClick={handleMouse}
       >
