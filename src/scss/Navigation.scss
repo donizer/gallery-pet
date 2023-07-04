@@ -1,5 +1,4 @@
 .nav {
-  z-index: 10;
   background-color: #993366;
   position: relative;
   top: 0px;
@@ -44,6 +43,7 @@
 @media screen and (max-width: 786px) {
   .nav {
     form {
+      z-index: 1;
       position: fixed;
       background-color: #00000080;
       padding: 1rem;
