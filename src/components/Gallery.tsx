@@ -22,7 +22,15 @@ function Gallery() {
   if (json == null) {
     return <main className={`main`}></main>;
   }
+
   if (instanceOfPhotos(json)) {
+    if (json.total_results == 0) {
+      return (
+        <main className={`main`}>
+          <div style={{ color: "black" }}>No such results</div>
+        </main>
+      );
+    }
     return (
       <>
         <main className={`main`}>

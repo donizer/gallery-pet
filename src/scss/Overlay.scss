@@ -20,7 +20,18 @@
       // background-color: #ffffff80;
       width: 5rem;
       height: 5rem;
-      border: solid 2px black;
+
+      &:hover {
+        div {
+          transition: all 1s ease-in-out;
+          &::before {
+            transform: rotate(-50deg);
+          }
+          &::after {
+            transform: rotate(50deg);
+          }
+        }
+      }
       div {
         &::before {
           position: absolute;
@@ -30,6 +41,8 @@
           height: 1rem;
           top: 2rem;
           transform: rotate(-45deg);
+          border: solid 4px #993366;
+          transition: all 0.1s ease-in-out;
         }
         &::after {
           position: absolute;
@@ -39,6 +52,8 @@
           height: 1rem;
           bottom: 2rem;
           transform: rotate(45deg);
+          border: solid 4px #993366;
+          transition: all 0.1s ease-in-out;
         }
       }
     }

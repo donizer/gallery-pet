@@ -1,0 +1,14 @@
+.select__container {
+  font-size: 46px;
+  height: 9rem;
+  .select__option {
+  }
+}
+@media screen and (max-width: 786px) {
+  .select__container {
+    height: 5rem;
+    margin-top: 8rem;
+    .select__option {
+    }
+  }
+}

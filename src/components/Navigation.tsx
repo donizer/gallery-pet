@@ -2,8 +2,9 @@ import "../scss/Navigation.scss";
 import { useEffect, useContext } from "react";
 import { useForm, Resolver } from "react-hook-form";
 import { PexelsContext } from "../contexts/ContextProvider";
-import { createClient } from "pexels";
+import { createClient, PhotosWithTotalResults } from "pexels";
 import BurgerButton from "./BurgerButton";
+import LanguageSelect from "./LanguageSelect";
 
 const client = createClient(
   "qaxLvqCpYIxuOSlbBG6BYEoZup3UZpB8a7PZ2JGEiWO7CPzmmQbQDGp7"
@@ -35,6 +36,7 @@ export default function Navigation() {
     setJson,
     isMobileMenuActive,
     setMobileMenuActive,
+    currLanguage,
   } = useContext(PexelsContext);
 
   const {
@@ -50,14 +52,19 @@ export default function Navigation() {
 
   useEffect(() => {
     if (typeof query === "string" && query !== null) {
-      client.photos.search({ query: query, per_page: 80 }).then((photos) => {
-        setJson(photos);
-      });
+      client.photos
+        .search({ query: query, per_page: 80, locale: currLanguage })
+        .then((photos) => {
+          setJson(photos);
+        });
     }
-  }, [query, setJson]);
+  }, [query, setJson, currLanguage]);
 
   useEffect(() => {
-    console.log(json);
+    if (json) {
+      const response = json as PhotosWithTotalResults;
+      console.log(response.total_results);
+    }
   }, [json]);
 
   return (
@@ -73,8 +80,9 @@ export default function Navigation() {
             (errors?.query && errors.query.message) || "Search for..."
           }
         />
+        <LanguageSelect className={"LanguageSelect"} />
       </form>
-      <div className=" Right">
+      <div className="Right">
         <BurgerButton />
       </div>
     </nav>

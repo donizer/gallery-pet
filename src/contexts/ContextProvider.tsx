@@ -15,6 +15,8 @@ const iGlobalContext: GlobalContextType = {
   currImage: null,
   overlayClass: "",
   isMobileMenuActive: false,
+  currLanguage: "en-US",
+  setCurrLanguage: () => null,
   setMobileMenuActive: () => null,
   setOverlayClass: () => null,
   setCurrImage: () => null,
@@ -41,6 +43,8 @@ export const PexelContextProvider = ({
   const [overlayClass, setOverlayClass] = React.useState<string>("");
   const [isMobileMenuActive, setMobileMenuActive] =
     React.useState<boolean>(false);
+  const [currLanguage, setCurrLanguage] =
+    React.useState<SupportedLanguages>("en-US");
   return (
     <PexelsContext.Provider
       value={{
@@ -58,6 +62,8 @@ export const PexelContextProvider = ({
         setOverlayClass,
         isMobileMenuActive,
         setMobileMenuActive,
+        currLanguage,
+        setCurrLanguage,
       }}
     >
       {children}
@@ -66,6 +72,8 @@ export const PexelContextProvider = ({
 };
 
 type GlobalContextType = {
+  currLanguage: SupportedLanguages;
+  setCurrLanguage: React.Dispatch<React.SetStateAction<SupportedLanguages>>;
   isMobileMenuActive: boolean;
   setMobileMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
   overlayClass: string;
@@ -88,3 +96,63 @@ export type ResponseSearchType =
   | Videos;
 
 export type PhotoOrVideoType = "photo" | "video";
+
+export type SupportedLanguages =
+  | "en-US"
+  | "pt-BR"
+  | "es-ES"
+  | "ca-ES"
+  | "de-DE"
+  | "it-IT"
+  | "fr-FR"
+  | "sv-SE"
+  | "id-ID"
+  | "pl-PL"
+  | "ja-JP"
+  | "zh-TW"
+  | "zh-CN"
+  | "ko-KR"
+  | "th-TH"
+  | "nl-NL"
+  | "hu-HU"
+  | "vi-VN"
+  | "cs-CZ"
+  | "da-DK"
+  | "fi-FI"
+  | "uk-UA"
+  | "el-GR"
+  | "ro-RO"
+  | "nb-NO"
+  | "sk-SK"
+  | "tr-TR"
+  | "ru-RU";
+
+export type LanguagesFlags =
+  | "🇺🇸"
+  | "🇵🇹"
+  | "🇪🇸"
+  | "🇪🇸"
+  | "🇩🇪"
+  | "🇮🇹"
+  | "🇫🇷"
+  | "🇸🇪"
+  | "🇮🇩"
+  | "🇵🇱"
+  | "🇯🇵"
+  | "🇹🇼"
+  | "🇨🇳"
+  | "🇰🇷"
+  | "🇹🇭"
+  | "🇳🇱"
+  | "🇭🇺"
+  | "🇻🇳"
+  | "🇨🇿"
+  | "🇩🇰"
+  | "🇫🇮"
+  | "🇺🇦"
+  | "🇬🇷"
+  | "🇷🇴"
+  | "🇳🇴"
+  | "🇸🇰"
+  | "🇹🇷"
+  | "🇷🇺";
